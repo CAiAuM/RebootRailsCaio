@@ -1,5 +1,4 @@
 class VolunteersController < ApplicationController
-
   def index
     @volunteers = Volunteer.all
   end
@@ -14,14 +13,16 @@ class VolunteersController < ApplicationController
 
   def create
     @volunteer = Volunteer.new(volunteer_params)
-    @volunteer.save
+    if @volunteer.save
+      redirect_to volunteer_path(@volunteer)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
-  # def set_volunteer
-  #   @volunteer = Volunteer.find(params[:id])
-  # end
+  private
 
   def volunteer_params
-    params.require(:volunteer).permit(:name, :phone_number)
+    params.require(:volunteer).permit(:name)
   end
 end

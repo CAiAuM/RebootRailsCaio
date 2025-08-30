@@ -7,3 +7,13 @@
   <p>Without phone Number</p>
 <% end %>
 
+<div class="row">
+  <% @volunteer.shifts.each do |shift|%>
+    <p><%= shift.event.name %></p>
+    <p><%= shift.feedback %></p>
+
+    <% end %>
+</div>
+
+<%= link_to "Back", root_path %>
+<%= link_to "Criar Evento", new_volunteer_shift_path(@volunteer) %>

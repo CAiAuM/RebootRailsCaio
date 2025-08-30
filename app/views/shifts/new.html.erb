@@ -1,0 +1,8 @@
+<%= simple_form_for [@volunteer, @shift] do |f| %>
+  <%= f.association :event,
+    label: "escolha um evento",
+    prompt: "selecione um evento",
+    input_html: { class: "form-select form-select-lg" }%>
+  <%= f.input :feedback %>
+  <%= f.submit "Salvar evento", class: 'btn btn-primary' %>
+<% end %>
