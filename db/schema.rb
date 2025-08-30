@@ -16,15 +16,20 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_30_144318) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
-    t.string "planet"
+    t.string "description"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "shifts", force: :cascade do |t|
     t.string "feedback"
+    t.bigint "volunteer_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_shifts_on_event_id"
+    t.index ["volunteer_id"], name: "index_shifts_on_volunteer_id"
   end
 
   create_table "volunteers", force: :cascade do |t|
@@ -34,4 +39,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_30_144318) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "shifts", "events"
+  add_foreign_key "shifts", "volunteers"
 end
