@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "volunteers#index"
 
+  resources :volunteers, only: [:index, :new, :show, :create]
+
 end

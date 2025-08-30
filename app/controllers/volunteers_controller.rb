@@ -5,6 +5,7 @@ class VolunteersController < ApplicationController
   end
 
   def show
+    @volunteer = Volunteer.find(params[:id])
   end
 
   def new
@@ -12,8 +13,15 @@ class VolunteersController < ApplicationController
   end
 
   def create
-    @volunteer = Volunteer.new
+    @volunteer = Volunteer.new(volunteer_params)
     @volunteer.save
   end
 
+  # def set_volunteer
+  #   @volunteer = Volunteer.find(params[:id])
+  # end
+
+  def volunteer_params
+    params.require(:volunteer).permit(:name, :phone_number)
+  end
 end

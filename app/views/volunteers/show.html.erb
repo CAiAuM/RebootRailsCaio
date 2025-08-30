@@ -1,0 +1,9 @@
+<h1><%= @volunteer.name %></h1>
+
+
+<% if @volunteer.phone_number %>
+  <p>Phone Number: <%= @volunteer.phone_number %></p>
+<% else %>
+  <p>Without phone Number</p>
+<% end %>
+

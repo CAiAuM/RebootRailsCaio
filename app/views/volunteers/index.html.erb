@@ -1,1 +1,9 @@
 <h1>index</h1>
+
+<ul>
+  <% @volunteers.each do |volunteer| %>
+    <li><%= link_to volunteer.name, volunteer_path(volunteer) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "new volunteer", new_volunteer_path %>

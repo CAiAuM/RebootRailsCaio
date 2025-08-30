@@ -1,0 +1,5 @@
+<%= simple_form_for @volunteer do |f| %>
+  <%= f.input :name %>
+  <%= f.phone_number :phone_number %>
+  <%= f.submit "Create new Volunteer", class: 'btn btn-primary' %>
+<% end %>
